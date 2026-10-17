@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Мама, а ты купишь мне новый телефон?</title>
+<style>
+:root{--bg:#ffe3ee;--ink:#3a1530;--btn:#e8368f;--btn2:#8a8a99;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2a1020;--ink:#ffe3ee;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#2a1020;--ink:#ffe3ee;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:Arial,sans-serif;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.box{padding:24px;max-width:560px}
+.emoji{font-size:72px}
+h1{font-size:clamp(28px,7vw,44px);margin:12px 0 28px;line-height:1.2}
+button{font-size:20px;border:0;border-radius:999px;padding:14px 32px;color:#fff;cursor:pointer;margin:6px}
+#yes{background:var(--btn)}
+#no{background:var(--btn2);position:relative}
+#msg{font-size:28px;font-weight:700;display:none}
+</style>
+</head>
+<body>
+<div class="box" id="main">
+<div class="emoji">📱🙏</div>
+<h1>Мама, а ты купишь мне новый телефон, пожалуйста?</h1>
+<button id="yes">Да, куплю ❤️</button>
+<button id="no">Нет</button>
+</div>
+<div class="box" id="msg">🎉 Спасибо, мамочка! Я тебя люблю! ❤️📱</div>
+<script>
+var no=document.getElementById('no');
+function dodge(){
+  var x=(Math.random()-.5)*Math.min(window.innerWidth-160,300);
+  var y=(Math.random()-.5)*200;
+  no.style.left=x+'px';no.style.top=y+'px';
+}
+no.addEventListener('mouseenter',dodge);
+no.addEventListener('touchstart',function(e){e.preventDefault();dodge();});
+no.addEventListener('click',dodge);
+document.getElementById('yes').addEventListener('click',function(){
+  document.getElementById('main').style.display='none';
+  document.getElementById('msg').style.display='block';
+});
+</script>
+</body>
+</html>
